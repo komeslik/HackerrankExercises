@@ -65,7 +65,7 @@ public class Solution {
             if(op == "add"){
                 root.add(contact);
             }else if (op == "find"){
-                root.findCount(contact);
+                System.out.println(root.findCount(contact));
             }
         }
     }
