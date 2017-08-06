@@ -11,46 +11,51 @@ public class Solution {
         private static int NUMBER_OF_CHARACTERS = 26;
         Trie[] children = new Trie[NUMBER_OF_CHARACTERS];
         int count = 0;
-
-        private static int getCharIndex(char c){
-            return c -'a';
+        private static int getCharIndex(char c) {
+            return c - 'a';
         }
-        private Trie getChild(char c){
+
+        private Trie getChild(char c) {
             return children[getCharIndex(c)];
         }
-        private void setChild(char c, Trie trie){
-            children[getCharIndex(c)]= trie;
+
+        private void setChild(char c, Trie trie) {
+            children[getCharIndex(c)] = trie;
         }
-        public void add(String s){
-            add(s,0);
+
+        public void add(String s) {
+            add(s, 0);
         }
-        private void add(String s, int index){
-            count ++;
-            if(index>=s.length()){
+
+        private void add(String s, int index) {
+            count++;
+            if (index >= s.length()) {
                 //return
                 return;
             }
             char current = s.charAt(index);
             Trie child = getChild(current);
-            if(child == null){
+            if (child == null) {
                 child = new Trie();
                 setChild(current, child);
             }
-            child.add(s, index+1);
+            child.add(s, index + 1);
         }
-        public int findCount(String s){
+
+        public int findCount(String s) {
             return findCount(s, 0);
         }
-        private int findCount(String s, int index){
-            if(index == s.length()){
+
+        private int findCount(String s, int index) {
+            if (index == s.length()) {
                 return count;
             }
             char current = s.charAt(index);
             Trie child = getChild(current);
-            if(child == null){
+            if (child == null) {
                 return 0;
             }
-            return child.findCount(s, index+1);
+            return child.findCount(s, index + 1);
         }
     }
 
