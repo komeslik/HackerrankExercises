@@ -55,17 +55,17 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        //scan
+        Trie root = new Trie();
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         for(int a0 = 0; a0 < n; a0++){
             String op = in.next();
             String contact = in.next();
-            Trie root = new Trie();
-            if(op == "add"){
+            if(op.equals("add") && contact !=null){
                 root.add(contact);
-            }else if (op == "find"){
-                System.out.println(root.findCount(contact));
+            }else if (op.equals("find") && contact != null){
+                int searchResult = root.findCount(contact);
+                System.out.println(searchResult);
             }
         }
     }
